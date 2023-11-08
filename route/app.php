@@ -23,17 +23,35 @@ Route::get('user/get', 'user/index');
 
 
 
-Route::group('/user', function () {
+Route::group('', function () {
 
-    Route::post('/login', 'user/login');
+    Route::post('/admin/login', 'admin/login');
 
-    Route::post('/register', 'user/register');
+    Route::post('/admin/register', 'admin/register');
+
+    Route::post('/user/login','user/login');
+
+    Route::post('/user/register','user/register');
 });
 
 
-Route::group('/api', function () {
+Route::group('/api/admin', function () {
 
-    Route::get('/getusers', 'user/getAll');
+    Route::get('/getall', 'admin/getAll');
+
+    Route::get('/getbyid/:id', 'admin/getById');
+
+    Route::post('/reset_pwd','admin/resetPwd');
+
+})->middleware(JwtMiddleware::class);
+
+
+
+Route::group('/api/user', function () {
+
+    Route::post('/file','upload/upload');
+
+    Route::get('/getall', 'user/getAll');
 
     Route::get('/getbyid/:id', 'user/getById');
 

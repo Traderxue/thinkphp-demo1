@@ -1,7 +1,8 @@
-<?php
+<?php 
 namespace app\model;
+
 use think\Model;
 
 class User extends Model{
-    protected $table = "tb_admin";
+    protected $table = "tb_user";
 }
