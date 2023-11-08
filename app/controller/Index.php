@@ -14,4 +14,11 @@ class Index extends BaseController
     {
         return 'hello,' . $name;
     }
+
+    public function hello1($name){
+        return json([
+            'name'=> $name,
+            'age'=>18,
+        ]);
+    }
 }
