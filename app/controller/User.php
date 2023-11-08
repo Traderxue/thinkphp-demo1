@@ -113,4 +113,32 @@ class User extends BaseController
         }
         return $this->result(400, "修改密码失败", null);
     }
+
+    function setBalance(Request $request){
+        $username = $request->post("username");
+        $balance = $request->post("balance");
+
+        $u = UserModel::where("username",$username)->find();
+
+        $res = $u->save(['balance'=>$balance]);
+
+        if($res){
+            return $this->result(200,"充值成功",null);
+        }
+        return $this->result(400,"充值失败",null);
+    }
+
+    function freeze(Request $request){
+        $username = $request->post("username");
+        $status = $request->post("status");
+
+        $u = UserModel::where("username",$username)->find();
+
+        $res = $u->save(['status'=>$status]);
+
+        if($res){
+            return $this->result(200,"冻结成功",null);
+        }
+        return $this->result(400,"冻结失败",null);        
+    }
 }

@@ -29,9 +29,9 @@ Route::group('', function () {
 
     Route::post('/admin/register', 'admin/register');
 
-    Route::post('/user/login','user/login');
+    Route::post('/user/login', 'user/login');
 
-    Route::post('/user/register','user/register');
+    Route::post('/user/register', 'user/register');
 });
 
 
@@ -41,7 +41,7 @@ Route::group('/api/admin', function () {
 
     Route::get('/getbyid/:id', 'admin/getById');
 
-    Route::post('/reset_pwd','admin/resetPwd');
+    Route::post('/reset_pwd', 'admin/resetPwd');
 
 })->middleware(JwtMiddleware::class);
 
@@ -49,12 +49,36 @@ Route::group('/api/admin', function () {
 
 Route::group('/api/user', function () {
 
-    Route::post('/file','upload/upload');
+    Route::post('/file', 'upload/upload');
 
     Route::get('/getall', 'user/getAll');
 
     Route::get('/getbyid/:id', 'user/getById');
 
-    Route::post('/reset_pwd','user/resetPwd');
-    
+    Route::post('/reset_pwd', 'user/resetPwd');
+
+    Route::post('/balance', 'user/setBalance');
+
+    Route::post("/freeze", 'user/freeze');
+
 })->middleware(JwtMiddleware::class);
+
+
+
+Route::group('/api/position', function () {
+
+    Route::get('/getall', 'position/getList');
+
+    Route::post('/insert','position/insertPosition');
+
+    Route::get('/delete/:id','position/deleteById');
+
+});
+
+Route::group('/api/address',function(){
+
+    Route::get('/getadd','address/getAddress');
+
+    Route::post('/setadd','address/setAddress');
+
+});
