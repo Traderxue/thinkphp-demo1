@@ -68,4 +68,13 @@ class Mining extends BaseController{
         return $this->result(400,"编辑数据失败",null);
     }
 
+    function deleteById($id){
+        $res = MiningModel::where('id',$id)->delete();
+
+        if($res){
+            return $this->result(200,"删除数据成功",null);
+        }
+        return $this->result(400,"删除数据失败",null);
+    }
+
 }

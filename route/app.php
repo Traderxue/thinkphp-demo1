@@ -141,4 +141,6 @@ Route::group("/api/mining", function () {
     Route::get("/get/:id","mining/getById");
 
     Route::post("/edit","mining/edit");
+
+    Route::get("/delete/:id",'mining/deleteById');
 });
