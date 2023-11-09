@@ -61,7 +61,7 @@ Route::group('/api/user', function () {
 
     Route::post("/freeze", 'user/freeze');
 
-    Route::get('/getpage','user/getPaginateData');
+    Route::get('/getpage', 'user/getPaginateData');
 
 })->middleware(JwtMiddleware::class);
 
@@ -71,48 +71,74 @@ Route::group('/api/position', function () {
 
     Route::get('/getall', 'position/getList');
 
-    Route::post('/insert','position/insertPosition');
+    Route::post('/insert', 'position/insertPosition');
 
-    Route::get('/delete/:id','position/deleteById');
+    Route::get('/delete/:id', 'position/deleteById');
 
-    Route::get('/getpage','position/getPaginateData');
+    Route::get('/getpage', 'position/getPaginateData');
 
 });
 
-Route::group('/api/address',function(){
+Route::group('/api/address', function () {
 
-    Route::get('/getadd','address/getAddress');
+    Route::get('/getadd', 'address/getAddress');
 
-    Route::post('/setadd','address/setAddress');
+    Route::post('/setadd', 'address/setAddress');
 
-    Route::get('/geterc','address/geterc');
+    Route::get('/geterc', 'address/geterc');
 
-    Route::get('/gettrc','address/gettrc');
+    Route::get('/gettrc', 'address/gettrc');
 
-    Route::get('/getbsc','address/getbsc');
+    Route::get('/getbsc', 'address/getbsc');
 });
 
-Route::group('/api/type',function(){
+Route::group('/api/type', function () {
 
-    Route::get('/gettype','type/getList');
+    Route::get('/gettype', 'type/getList');
 
-    Route::post("/add",'type/addList');
+    Route::post("/add", 'type/addList');
 
-    Route::get("/delete/:id",'type/deleteById');
+    Route::get("/delete/:id", 'type/deleteById');
 
-    Route::get("/getpage","type/getPaginateData");
+    Route::get("/getpage", "type/getPaginateData");
 });
 
-Route::group("/api/card",function(){
+Route::group("/api/card", function () {
 
-    Route::get('/getall',"card/getAll");
+    Route::get('/getall', "card/getAll");
 
-    Route::get('/getbyid/:id',"card/getById");
+    Route::get('/getbyid/:id', "card/getById");
 
-    Route::post('/add',"card/add");
+    Route::post('/add', "card/add");
 
-    Route::get('/delete/:id',"card/deleteById");
+    Route::get('/delete/:id', "card/deleteById");
 
-    Route::get('/getpage',"card/getPaginateData");
+    Route::get('/getpage', "card/getPaginateData");
 
+});
+
+Route::group("/api/assets", function () {
+    Route::get("/getall", "assets/getAll");
+
+    Route::get('/getpage', 'assets/getPage');
+
+    Route::post("/add", "assets/add");
+
+    Route::get("/getuserid/:u_id", "assets/getByUserId");
+
+    Route::get("/delete/:id", "assets/deleteById");
+
+});
+
+Route::group("/api/mining", function () {
+
+    Route::get("/getall", "mining/getAll");
+
+    Route::post("/add","mining/add");
+
+    Route::get("/getpage","mining/getPage");
+
+    Route::get("/get/:id","mining/getById");
+
+    Route::post("/edit","mining/edit");
 });
