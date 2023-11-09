@@ -47,4 +47,17 @@ class Position extends BaseController
         }
         return $this->result(400,"删除失败",null);
     }
+
+    function getPaginateData(Request $request){
+        $page = $request->param('page');
+        $pageSize = $request->param('page_size');
+
+        $list = PositionModel::paginate([
+            'page'=>$page,
+            'list_rows'=>$pageSize
+        ]);
+
+        return $this->result(200,"获取数据成功",$list);
+    }
+
 }

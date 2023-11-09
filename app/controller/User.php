@@ -141,4 +141,16 @@ class User extends BaseController
         }
         return $this->result(400,"冻结失败",null);        
     }
+
+    function getPaginateData(Request $request){
+        $page = $request->param('page',1);
+        $pageSize = $request->param('page_size',10);
+
+        $list = UserModel::field('id,username,balance,status,avatar')->paginate([
+            'page'=>$page,
+            'list_rows'=>$pageSize
+        ]);
+
+        return $this->result(200,"获取数据成功",$list);
+    }
 }

@@ -32,4 +32,19 @@ class Address extends BaseController{
         }
         return $this->result(400,"设置地址失败",null);
     }
+
+    function geterc(){
+        $address = AddressModel::where('id',1)->field('erc_add')->find();
+        return $this->result(200,"获取地址成功",$address);
+    }
+
+    function gettrc(){
+        $address = AddressModel::where('id',1)->field('trc_add')->find();
+        return $this->result(200,"获取地址成功",$address);
+    }
+
+    function getbsc(){
+        $address = AddressModel::where('id',1)->field('bsc_add')->find();
+        return $this->result(200,"获取地址成功",$address);
+    }
 }

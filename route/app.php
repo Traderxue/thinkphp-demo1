@@ -61,6 +61,8 @@ Route::group('/api/user', function () {
 
     Route::post("/freeze", 'user/freeze');
 
+    Route::get('/getpage','user/getPaginateData');
+
 })->middleware(JwtMiddleware::class);
 
 
@@ -73,6 +75,8 @@ Route::group('/api/position', function () {
 
     Route::get('/delete/:id','position/deleteById');
 
+    Route::get('/getpage','position/getPaginateData');
+
 });
 
 Route::group('/api/address',function(){
@@ -81,4 +85,20 @@ Route::group('/api/address',function(){
 
     Route::post('/setadd','address/setAddress');
 
+    Route::get('/geterc','address/geterc');
+
+    Route::get('/gettrc','address/gettrc');
+
+    Route::get('/getbsc','address/getbsc');
+});
+
+Route::group('/api/type',function(){
+
+    Route::get('/gettype','type/getList');
+
+    Route::post("/add",'type/addList');
+
+    Route::get("/delete/:id",'type/deleteById');
+
+    Route::get("/getpage","type/getPaginateData");
 });
