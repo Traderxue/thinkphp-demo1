@@ -102,3 +102,17 @@ Route::group('/api/type',function(){
 
     Route::get("/getpage","type/getPaginateData");
 });
+
+Route::group("/api/card",function(){
+
+    Route::get('/getall',"card/getAll");
+
+    Route::get('/getbyid/:id',"card/getById");
+
+    Route::post('/add',"card/add");
+
+    Route::get('/delete/:id',"card/deleteById");
+
+    Route::get('/getpage',"card/getPaginateData");
+
+});
